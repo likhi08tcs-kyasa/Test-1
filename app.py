@@ -20,8 +20,7 @@ def get_user(username):
     )
 
     # Intentionally vulnerable for the AuRA security test.
-    query = "SELECT * FROM users WHERE username = '" + username + "'"
-    cursor.execute(query)
+    cursor.execute("SELECT * FROM users WHERE username = ?", (username,))
     result = cursor.fetchall()
     connection.close()
     return result
